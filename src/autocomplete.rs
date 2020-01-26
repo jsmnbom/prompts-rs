@@ -16,6 +16,7 @@ use crossterm::{
 };
 use futures::StreamExt;
 use std::cmp;
+use std::fmt;
 use std::io::{stdout, Write};
 
 /// Default filter that simply filters all entires that start with the
@@ -63,6 +64,17 @@ pub struct AutocompletePrompt<T: std::clone::Clone + std::marker::Send + std::fm
     cursor: usize,
     filter: fn(input: &str, choices: &Vec<T>) -> Vec<T>,
 }
+impl<T: std::fmt::Debug + std::clone::Clone + std::marker::Send + std::fmt::Display> fmt::Debug
+    for AutocompletePrompt<T>
+{
+    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+        fmt.debug_struct("AutocompletePrompt")
+            .field("message", &self.message)
+            .field("choices", &self.choices)
+            .field("filter", &format_args!("{}", "unknown filter"))
+            .finish()
+    }
+}
 impl<T: std::clone::Clone + std::marker::Send + std::fmt::Display> AutocompletePrompt<T> {
     /// Returns a AutocompletePrompt ready to be run
     ///
@@ -105,7 +117,7 @@ impl<T: std::clone::Clone + std::marker::Send + std::fmt::Display> Prompt<T>
                 Some(Ok(Event::Key(event))) => self.handle_key_event(event),
                 Some(Err(e)) => {
                     disable_raw_mode()?;
-                    return Err(e)
+                    return Err(e);
                 }
                 _ => {}
             }

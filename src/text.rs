@@ -72,16 +72,13 @@ pub struct TextPrompt {
 impl fmt::Debug for TextPrompt {
     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
         fmt.debug_struct("TextPrompt")
-            .field("message", &self.message)
-            .field("style", &self.style)
-            .field(
-                "validator",
-                &match self.validator {
-                    Some(_) => "has custom validator",
-                    None => "none",
-                },
-            )
-            .finish()
+           .field("message", &self.message)
+           .field("style", &self.style)
+           .field("validator", &format_args!("{}", &match self.validator {
+                    Some(_) => "custom validator",
+                    None => "None",
+                }))
+           .finish()
     }
 }
 impl TextPrompt {

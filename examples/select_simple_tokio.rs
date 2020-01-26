@@ -10,6 +10,8 @@ async fn main() {
     // Prepare the prompt
     let mut prompt = SelectPrompt::new("Choose a word", data);
 
+    println!("Running prompt: {:?}", prompt);
+
     // Run the prompt and echo the selection
     match prompt.run().await {
         Ok(Some(s)) => println!("Your choice is: {}", s),

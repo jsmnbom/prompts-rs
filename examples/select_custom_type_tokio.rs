@@ -1,6 +1,6 @@
 use prompt::{select::SelectPrompt, Prompt};
 
-#[derive(Clone)] // Must derive Clone
+#[derive(Clone, Debug)] // Must derive Clone
 struct Person {
     first_name: &'static str, // Static for example purposes
     last_name: &'static str,  // Static for example purposes
@@ -34,6 +34,8 @@ async fn main() {
     ];
     // Prepare prompt
     let mut prompt = SelectPrompt::new("Choose a person", data);
+
+    println!("Running prompt: {:?}", prompt);
 
     // Run the prompt and echo the chosen person's id
     match prompt.run().await {

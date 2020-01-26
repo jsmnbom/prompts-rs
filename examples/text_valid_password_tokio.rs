@@ -13,7 +13,9 @@ async fn main() {
             _ => Err("You must not type more than 20 characters!".to_string()),
         })
         .with_style(Style::Password);
-    
+
+    println!("Running prompt: {:?}", prompt);
+
     // Run the prompt and echo the password
     match prompt.run().await {
         Ok(Some(s)) => println!("You wrote: {}", s),

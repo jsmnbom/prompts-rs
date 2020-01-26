@@ -5,6 +5,8 @@ async fn main() {
     // Prepare the prompt
     let mut prompt = TextPrompt::new("What is your name?");
 
+    println!("Running prompt: {:?}", prompt);
+
     // Run the prompt and echo the result
     match prompt.run().await {
         Ok(Some(s)) => println!("You wrote: {}", s),

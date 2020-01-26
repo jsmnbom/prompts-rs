@@ -43,12 +43,20 @@ use std::io::{stdout, Write};
 ///     Err(e) => println!("Some kind of crossterm error happened: {:?}", e),
 /// }
 /// ```
-pub struct SelectPrompt<T: std::clone::Clone + std::marker::Send + std::fmt::Display> {
+pub struct SelectPrompt<T> {
     message: String,
     state: PromptState,
     choices: Vec<T>,
     current: usize,
     limit: usize,
+}
+impl<T: std::fmt::Debug> fmt::Debug for SelectPrompt<T> {
+    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+        fmt.debug_struct("SelectPrompt")
+            .field("message", &self.message)
+            .field("choices", &self.choices)
+            .finish()
+    }
 }
 impl<T: std::clone::Clone + std::marker::Send + std::fmt::Display> SelectPrompt<T> {
     /// Returns a SelectPrompt ready to be run

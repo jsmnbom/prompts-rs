@@ -13,6 +13,7 @@ use crossterm::{
     terminal::{disable_raw_mode, enable_raw_mode, Clear, ClearType},
 };
 use futures::StreamExt;
+use std::fmt;
 use std::io::{stdout, Write};
 
 /// Interactive prompt where the user can choose yes or no
@@ -39,6 +40,14 @@ pub struct ConfirmPrompt {
     state: PromptState,
     answer: bool,
     initial: Option<bool>,
+}
+impl fmt::Debug for ConfirmPrompt {
+    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+        fmt.debug_struct("ConfirmPrompt")
+            .field("message", &self.message)
+            .field("initial", &self.initial)
+            .finish()
+    }
 }
 impl ConfirmPrompt {
     /// Returns a ConfirmPrompt ready to be run
@@ -79,7 +88,7 @@ impl Prompt<bool> for ConfirmPrompt {
                 Some(Ok(Event::Key(event))) => self.handle_key_event(event),
                 Some(Err(e)) => {
                     disable_raw_mode()?;
-                    return Err(e)
+                    return Err(e);
                 }
                 _ => {}
             }

@@ -5,6 +5,8 @@ async fn main() {
     // Prepare the prompt
     let mut prompt = ConfirmPrompt::new("Are you sure?").set_initial(true);
 
+    println!("Running prompt: {:?}", prompt);
+
     // Run the prompt and echo the result
     match prompt.run().await {
         Ok(Some(true)) => println!("You were sure!"),
