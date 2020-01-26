@@ -1,10 +1,10 @@
 [package]
-name = "prompt"
+name = "prompts"
 version = "0.1.0"
 authors = ["Jasmin Bom <jsmnbom@gmail.com>"]
 edition = "2018"
 description = "Interactive prompts for the command line"
-repository = "https://github.com/jsmnbom/prompt-rs"
+repository = "https://github.com/jsmnbom/prompts-rs"
 license = " MIT OR Apache-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
