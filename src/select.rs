@@ -197,10 +197,10 @@ impl<T: std::clone::Clone + std::marker::Send + std::fmt::Display> Prompt<T> for
                 KeyCode::End => {
                     self.current = self.choices.len() - 1;
                 }
-                KeyCode::Up => {
+                KeyCode::Char('k') | KeyCode::Up => {
                     self.current = self.current.checked_sub(1).unwrap_or(0);
                 }
-                KeyCode::Down => {
+                KeyCode::Char('j') | KeyCode::Down => {
                     self.current = cmp::min(self.current + 1, self.choices.len() - 1);
                 }
                 _ => {}
