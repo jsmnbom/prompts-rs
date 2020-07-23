@@ -5,6 +5,8 @@
   <sub>Easy to use CLI prompts to enquire users for information<sub>
 </p>
 
+API docs: https://docs.rs/prompts/
+
 ## ❯ Credit
 
 This crate is an attempt to port [terkelg/prompts](https://github.com/terkelg/prompts) to rust.
