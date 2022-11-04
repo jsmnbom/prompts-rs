@@ -23,8 +23,8 @@ use std::io::{stdout, Write};
 ///
 /// # Examples
 ///
-/// ```
-/// use prompt::{confirm::ConfirmPrompt, Prompt};
+/// ```rust,ignore
+/// use prompts::{confirm::ConfirmPrompt, Prompt};
 /// let mut prompt = ConfirmPrompt::new("Are you sure?");
 ///
 /// match prompt.run().await {

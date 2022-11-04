@@ -49,8 +49,8 @@ impl Default for Style {
 ///
 /// # Examples
 ///
-/// ```
-/// use prompt::{text::TextPrompt, Prompt};
+/// ```rust,ignore
+/// use prompts::{text::TextPrompt, Prompt};
 /// let mut prompt = TextPrompt::new("What is your name?");
 /// match prompt.run().await {
 ///     Ok(Some(s)) => println!("You wrote: {}", s),

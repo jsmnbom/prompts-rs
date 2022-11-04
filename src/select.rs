@@ -31,8 +31,8 @@ use std::io::{stdout, Write};
 ///
 /// # Examples
 ///
-/// ```
-/// use prompt::{Prompt, select::{SelectPrompt}};
+/// ```rust,ignore
+/// use prompts::{Prompt, select::{SelectPrompt}};
 ///
 /// let data = vec!["The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"];
 /// let mut prompt = SelectPrompt::new("Choose a word", data);

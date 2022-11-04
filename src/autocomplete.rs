@@ -43,7 +43,7 @@ fn simple_filter<T: std::clone::Clone + std::fmt::Display>(
 ///
 /// # Examples
 ///
-/// ```
+/// ```rust,ignore
 /// use prompts::{Prompt, autocomplete::{AutocompletePrompt}};
 ///
 /// let data = vec!["The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"];
