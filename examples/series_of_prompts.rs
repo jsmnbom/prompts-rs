@@ -1,4 +1,4 @@
-use prompt::{select::SelectPrompt, text::TextPrompt, Prompt};
+use prompts::{select::SelectPrompt, text::TextPrompt, Prompt};
 
 #[tokio::main]
 async fn main() {
