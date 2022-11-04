@@ -1,4 +1,4 @@
-use prompt::{autocomplete::AutocompletePrompt, Prompt};
+use prompts::{autocomplete::AutocompletePrompt, Prompt};
 
 #[tokio::main]
 async fn main() {
