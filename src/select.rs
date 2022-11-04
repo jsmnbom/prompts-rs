@@ -11,7 +11,7 @@ use crossterm::{
     cursor,
     event::{Event, EventStream, KeyCode, KeyEvent, KeyModifiers},
     queue,
-    style::{style, Attribute, Color, Print, PrintStyledContent},
+    style::{style, Attribute, Color, Print, PrintStyledContent, Stylize},
     terminal::{disable_raw_mode, enable_raw_mode, size as terminal_size, Clear, ClearType},
 };
 use futures::StreamExt;

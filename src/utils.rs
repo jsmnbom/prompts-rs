@@ -4,7 +4,7 @@
 
 use crossterm::{
     event::{KeyCode, KeyEvent, KeyModifiers},
-    style::{style, Color, PrintStyledContent},
+    style::{style, Color, PrintStyledContent, Stylize},
 };
 use std::cmp;
 
@@ -93,14 +93,17 @@ pub fn is_abort_event(event: KeyEvent) -> bool {
         KeyEvent {
             modifiers: KeyModifiers::CONTROL,
             code: KeyCode::Char('c'),
+            ..
         } => true,
         KeyEvent {
             modifiers: KeyModifiers::CONTROL,
             code: KeyCode::Char('d'),
+            ..
         } => true,
         KeyEvent {
             modifiers,
             code: KeyCode::Esc,
+            ..
         } if modifiers == KeyModifiers::empty() => true,
         _ => false,
     }

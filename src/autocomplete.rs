@@ -7,11 +7,12 @@ use crate::{
     Prompt,
 };
 use async_trait::async_trait;
+use crossterm::style::PrintStyledContent;
 use crossterm::{
     cursor,
     event::{Event, EventStream, KeyCode, KeyEvent, KeyModifiers},
     queue,
-    style::{style, Attribute, Color, Print, PrintStyledContent},
+    style::{style, Attribute, Color, Print, Stylize},
     terminal::{disable_raw_mode, enable_raw_mode, size as terminal_size, Clear, ClearType},
 };
 use futures::StreamExt;
@@ -43,7 +44,7 @@ fn simple_filter<T: std::clone::Clone + std::fmt::Display>(
 /// # Examples
 ///
 /// ```
-/// use prompt::{Prompt, autocomplete::{AutocompletePrompt}};
+/// use prompts::{Prompt, autocomplete::{AutocompletePrompt}};
 ///
 /// let data = vec!["The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"];
 /// let mut prompt = AutocompletePrompt::new("Choose a word", data);
