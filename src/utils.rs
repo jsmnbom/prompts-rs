@@ -142,6 +142,25 @@ pub fn calc_entries(current: usize, total: usize, limit: usize) -> (usize, usize
     (start_index, end_index)
 }
 
+/// Default filter that simply filters all entries that start with the
+/// input based on the to_string of the object
+pub fn simple_filter<T: std::clone::Clone + std::fmt::Display>(
+    input: &str,
+    choices: &Vec<T>,
+) -> Vec<T> {
+    choices
+        .iter()
+        .filter(|choice| choice.to_string().starts_with(input))
+        .cloned()
+        .collect()
+}
+
+/// Filter that simply filters all entries that contain the
+/// input based on the to_string of the object
+pub fn contains_filter<T: std::fmt::Display>(input: &str, choice: &T) -> bool {
+    choice.to_string().contains(input)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
