@@ -1,4 +1,4 @@
-use prompt::{
+use prompts::{
     text::{Style, TextPrompt},
     Prompt,
 };

@@ -1,4 +1,4 @@
-use prompt::{select::SelectPrompt, Prompt};
+use prompts::{select::SelectPrompt, Prompt};
 
 #[derive(Clone, Debug)] // Must derive Clone
 struct Person {
