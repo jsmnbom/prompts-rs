@@ -1,4 +1,4 @@
-use prompt::{confirm::ConfirmPrompt, Prompt};
+use prompts::{confirm::ConfirmPrompt, Prompt};
 
 #[tokio::main]
 async fn main() {

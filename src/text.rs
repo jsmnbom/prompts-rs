@@ -9,7 +9,7 @@ use crossterm::{
     cursor,
     event::{Event, EventStream, KeyCode, KeyEvent, KeyModifiers},
     queue,
-    style::{style, Attribute, Color, Print, PrintStyledContent},
+    style::{style, Attribute, Color, Print, PrintStyledContent, Stylize},
     terminal::{disable_raw_mode, enable_raw_mode, Clear, ClearType},
 };
 use futures::StreamExt;
@@ -49,8 +49,8 @@ impl Default for Style {
 ///
 /// # Examples
 ///
-/// ```
-/// use prompt::{text::TextPrompt, Prompt};
+/// ```rust,ignore
+/// use prompts::{text::TextPrompt, Prompt};
 /// let mut prompt = TextPrompt::new("What is your name?");
 /// match prompt.run().await {
 ///     Ok(Some(s)) => println!("You wrote: {}", s),
@@ -72,13 +72,19 @@ pub struct TextPrompt {
 impl fmt::Debug for TextPrompt {
     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
         fmt.debug_struct("TextPrompt")
-           .field("message", &self.message)
-           .field("style", &self.style)
-           .field("validator", &format_args!("{}", &match self.validator {
-                    Some(_) => "custom validator",
-                    None => "None",
-                }))
-           .finish()
+            .field("message", &self.message)
+            .field("style", &self.style)
+            .field(
+                "validator",
+                &format_args!(
+                    "{}",
+                    &match self.validator {
+                        Some(_) => "custom validator",
+                        None => "None",
+                    }
+                ),
+            )
+            .finish()
     }
 }
 impl TextPrompt {

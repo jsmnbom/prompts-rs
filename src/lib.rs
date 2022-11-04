@@ -1,5 +1,6 @@
 pub mod autocomplete;
 pub mod confirm;
+pub mod multi_select;
 pub mod select;
 pub mod text;
 pub mod utils;

@@ -4,7 +4,7 @@
 
 use crossterm::{
     event::{KeyCode, KeyEvent, KeyModifiers},
-    style::{style, Color, PrintStyledContent},
+    style::{style, Color, PrintStyledContent, Stylize},
 };
 use std::cmp;
 
@@ -93,14 +93,17 @@ pub fn is_abort_event(event: KeyEvent) -> bool {
         KeyEvent {
             modifiers: KeyModifiers::CONTROL,
             code: KeyCode::Char('c'),
+            ..
         } => true,
         KeyEvent {
             modifiers: KeyModifiers::CONTROL,
             code: KeyCode::Char('d'),
+            ..
         } => true,
         KeyEvent {
             modifiers,
             code: KeyCode::Esc,
+            ..
         } if modifiers == KeyModifiers::empty() => true,
         _ => false,
     }
@@ -137,6 +140,25 @@ pub fn calc_entries(current: usize, total: usize, limit: usize) -> (usize, usize
     );
     let end_index = cmp::min(start_index + limit, total);
     (start_index, end_index)
+}
+
+/// Default filter that simply filters all entries that start with the
+/// input based on the to_string of the object
+pub fn simple_filter<T: std::clone::Clone + std::fmt::Display>(
+    input: &str,
+    choices: &Vec<T>,
+) -> Vec<T> {
+    choices
+        .iter()
+        .filter(|choice| choice.to_string().starts_with(input))
+        .cloned()
+        .collect()
+}
+
+/// Filter that simply filters all entries that contain the
+/// input based on the to_string of the object
+pub fn contains_filter<T: std::fmt::Display>(input: &str, choice: &T) -> bool {
+    choice.to_string().contains(input)
 }
 
 #[cfg(test)]

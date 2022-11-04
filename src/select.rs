@@ -11,7 +11,7 @@ use crossterm::{
     cursor,
     event::{Event, EventStream, KeyCode, KeyEvent, KeyModifiers},
     queue,
-    style::{style, Attribute, Color, Print, PrintStyledContent},
+    style::{style, Attribute, Color, Print, PrintStyledContent, Stylize},
     terminal::{disable_raw_mode, enable_raw_mode, size as terminal_size, Clear, ClearType},
 };
 use futures::StreamExt;
@@ -31,8 +31,8 @@ use std::io::{stdout, Write};
 ///
 /// # Examples
 ///
-/// ```
-/// use prompt::{Prompt, select::{SelectPrompt}};
+/// ```rust,ignore
+/// use prompts::{Prompt, select::{SelectPrompt}};
 ///
 /// let data = vec!["The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"];
 /// let mut prompt = SelectPrompt::new("Choose a word", data);

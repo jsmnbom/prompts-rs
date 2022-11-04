@@ -9,7 +9,7 @@ use crossterm::{
     cursor,
     event::{Event, EventStream, KeyCode, KeyEvent, KeyModifiers},
     queue,
-    style::{style, Attribute, Color, Print, PrintStyledContent},
+    style::{style, Attribute, Color, Print, PrintStyledContent, Stylize},
     terminal::{disable_raw_mode, enable_raw_mode, Clear, ClearType},
 };
 use futures::StreamExt;
@@ -23,8 +23,8 @@ use std::io::{stdout, Write};
 ///
 /// # Examples
 ///
-/// ```
-/// use prompt::{confirm::ConfirmPrompt, Prompt};
+/// ```rust,ignore
+/// use prompts::{confirm::ConfirmPrompt, Prompt};
 /// let mut prompt = ConfirmPrompt::new("Are you sure?");
 ///
 /// match prompt.run().await {
